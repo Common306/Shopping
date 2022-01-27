@@ -1,0 +1,40 @@
+.pay-container {
+    max-width: 1200px;
+    margin: 50px auto;
+    background-color: #f0f0f0;
+    padding: 20px;
+}
+
+.title {
+    border-bottom: 1px solid #ddd;
+    line-height: 35px;
+}
+
+.form-info {
+    padding: 20px 50px;
+}
+
+.form-info div {
+    margin: 15px 0;
+}
+
+.form-info div label {
+    width: 30%;
+    display: inline-block;
+    padding-left: 20px;
+}
+
+.form-info div input {
+    width: 60%;
+    padding: 10px;
+    font-size:16px;
+}
+
+.pay-container form input[type="submit"] {
+    background-color: #222;
+    color: #fff;
+    padding: 10px 20px;
+    border: none;
+    font-size:16px;
+    margin-left: 65px;
+}

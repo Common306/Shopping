@@ -1,0 +1,50 @@
+.account-container {
+    max-width: 1200px;
+    margin: 30px auto 50px auto;
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.account-container .title {
+    width: 100%;
+    margin-bottom: 40px;
+}
+
+.account-container-child {
+    width: 50%;
+}
+
+.account-container-child input[type="submit"] {
+    padding: 15px 20px;
+    background-color: #222;
+    color: #fff;
+    border: none;
+    margin-top: 10px;
+}
+
+.title2 {
+    width: 80%;
+    padding: 15px 0;
+    border-bottom: 1px solid #ddd;
+    margin-bottom: 30px;
+}
+
+.account-form {
+    padding: 15px 0;
+}
+
+.account-form label {
+    display: block;
+    margin-bottom: 20px;
+}
+
+.account-form input{
+    width: 60%;
+    padding: 10px;
+    border: 1px solid #ddd;
+    outline: none;
+}
+
+.account-form2 {
+    padding: 15px 0;
+}

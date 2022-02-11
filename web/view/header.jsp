@@ -1,6 +1,7 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:useBean id="classify" class="DAL.ClassifyDBContext" scope="request" ></jsp:useBean>
+<jsp:useBean id="category" class="DAL.CategoryDBContext" scope="request" ></jsp:useBean>
 
     <div class="header">
         <div class="header-child">
@@ -14,11 +15,9 @@
                         <li>
                             <a href="#" class="sub-menu-list-header">${cl.classifyName}</a>
                             <ul>
-                                <li><a href="#" class="sub-menu-item">Áo sweater</a></li>
-                                <li><a href="#" class="sub-menu-item">Áo sweater</a></li>
-                                <li><a href="#" class="sub-menu-item">Áo sweater</a></li>
-                                <li><a href="#" class="sub-menu-item">Áo sweater</a></li>
-                                <li><a href="#" class="sub-menu-item">Áo sweater</a></li>
+                                <c:forEach items="${category.getListCategory(cl.classifyId)}" var="ca">
+                                    <li><a href="#" class="sub-menu-item">${ca.categoryName}</a></li>
+                                </c:forEach>
                             </ul>
                         </li> 
                     </c:forEach>

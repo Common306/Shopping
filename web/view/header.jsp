@@ -1,43 +1,27 @@
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<jsp:useBean id="classify" class="DAL.ClassifyDBContext" scope="request" ></jsp:useBean>
 
-<div class="header">
-    <div class="header-child">
-        <div class="header-left">
-            <a href="#" class="padding3020" id="menu-open">
-                CORE
-            </a>
-            <div class="sub-menu">
-                <ul class="sub-menu-list">
-                    <li>
-                        <a href="#" class="sub-menu-list-header">Nam</a>
-                        <ul>
-                            <li><a href="#" class="sub-menu-item">Áo sweater</a></li>
-                            <li><a href="#" class="sub-menu-item">Áo sweater</a></li>
-                            <li><a href="#" class="sub-menu-item">Áo sweater</a></li>
-                            <li><a href="#" class="sub-menu-item">Áo sweater</a></li>
-                            <li><a href="#" class="sub-menu-item">Áo sweater</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#" class="sub-menu-list-header">Nam</a>
-                        <ul>
-                            <li><a href="#" class="sub-menu-item">Áo sweater</a></li>
-                            <li><a href="#" class="sub-menu-item">Áo sweater</a></li>
-                            <li><a href="#" class="sub-menu-item">Áo sweater</a></li>
-                            <li><a href="#" class="sub-menu-item">Áo sweater</a></li>
-                            <li><a href="#" class="sub-menu-item">Áo sweater</a></li>
-                        </ul>
-                    </li>
-                    <li>
-                        <a href="#" class="sub-menu-list-header">Nam</a>
-                        <ul>
-                            <li><a href="#" class="sub-menu-item">Áo sweater</a></li>
-                            <li><a href="#" class="sub-menu-item">Áo sweater</a></li>
-                            <li><a href="#" class="sub-menu-item">Áo sweater</a></li>
-                            <li><a href="#" class="sub-menu-item">Áo sweater</a></li>
-                            <li><a href="#" class="sub-menu-item">Áo sweater</a></li>
-                        </ul>
-                    </li>
+    <div class="header">
+        <div class="header-child">
+            <div class="header-left">
+                <a href="#" class="padding3020" id="menu-open">
+                    CORE
+                </a>
+                <div class="sub-menu">
+                    <ul class="sub-menu-list">
+                    <c:forEach items="${classify.listClassify}" var="cl">
+                        <li>
+                            <a href="#" class="sub-menu-list-header">${cl.classifyName}</a>
+                            <ul>
+                                <li><a href="#" class="sub-menu-item">Áo sweater</a></li>
+                                <li><a href="#" class="sub-menu-item">Áo sweater</a></li>
+                                <li><a href="#" class="sub-menu-item">Áo sweater</a></li>
+                                <li><a href="#" class="sub-menu-item">Áo sweater</a></li>
+                                <li><a href="#" class="sub-menu-item">Áo sweater</a></li>
+                            </ul>
+                        </li> 
+                    </c:forEach>
                 </ul>
             </div>
         </div>

@@ -42,8 +42,8 @@
             </div>
         </div>
         <div class="header-middle">
-            <a href="#" class="padding3020">
-                <img src="https://hanoiriot.com/wp-content/uploads/2020/05/logo.png" alt="logo">
+            <a href="#" class="padding3020" style="display: inline">
+                <img src="https://printgo.vn/uploads/media/772948/logo-thoi-trang-nam_1584632299.jpg" alt="logo" style="height: 78px">
             </a>
         </div>
         <div class="header-right">

@@ -13,10 +13,10 @@
                     <ul class="sub-menu-list">
                     <c:forEach items="${classify.listClassify}" var="cl">
                         <li>
-                            <a href="../category?classify=${cl.classifyId}" class="sub-menu-list-header">${cl.classifyName}</a>
+                            <a href="category?classify=${cl.classifyId}" class="sub-menu-list-header">${cl.classifyName}</a>
                             <ul>
                                 <c:forEach items="${category.getListCategory(cl.classifyId)}" var="ca">
-                                    <li><a href="../category?classify=${cl.classifyId}&category=${ca.categoryId}" class="sub-menu-item">${ca.categoryName}</a></li>
+                                    <li><a href="category?classify=${cl.classifyId}&category=${ca.categoryId}" class="sub-menu-item">${ca.categoryName}</a></li>
                                 </c:forEach>
                             </ul>
                         </li> 
@@ -25,7 +25,7 @@
             </div>
         </div>
         <div class="header-middle">
-            <a href="#" class="padding3020" style="display: inline">
+            <a href="home.jsp" class="padding3020" style="display: inline">
                 <img src="https://printgo.vn/uploads/media/772948/logo-thoi-trang-nam_1584632299.jpg" alt="logo" style="height: 78px">
             </a>
         </div>

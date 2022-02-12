@@ -13,10 +13,10 @@
                     <ul class="sub-menu-list">
                     <c:forEach items="${classify.listClassify}" var="cl">
                         <li>
-                            <a href="#" class="sub-menu-list-header">${cl.classifyName}</a>
+                            <a href="../category?classify=${cl.classifyId}" class="sub-menu-list-header">${cl.classifyName}</a>
                             <ul>
                                 <c:forEach items="${category.getListCategory(cl.classifyId)}" var="ca">
-                                    <li><a href="#" class="sub-menu-item">${ca.categoryName}</a></li>
+                                    <li><a href="../category?classify=${cl.classifyId}&category=${ca.categoryId}" class="sub-menu-item">${ca.categoryName}</a></li>
                                 </c:forEach>
                             </ul>
                         </li> 

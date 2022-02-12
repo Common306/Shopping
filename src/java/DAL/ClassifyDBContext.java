@@ -28,4 +28,21 @@ public class ClassifyDBContext extends DBContext{
         }
         return listClassify;
     }
+    
+    public Classify getClassifyById(int id) {
+        String query = "SELECT ClassifyID, ClassifyName FROM dbo.Classifies WHERE ClassifyID = ?";
+        try {
+            PreparedStatement ps = connection.prepareStatement(query);
+            ps.setInt(1, id);
+            ResultSet rs = ps.executeQuery();
+            
+            if (rs.next()) {                
+                return new Classify(rs.getInt("ClassifyID"), rs.getString("ClassifyName"));
+            }
+            
+        } catch (SQLException ex) {
+            Logger.getLogger(ClassifyDBContext.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return null;
+    }
 }

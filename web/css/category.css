@@ -44,9 +44,14 @@
 .product-item {
     margin: 0 38px;
     margin-bottom: 30px;
+    width: 324px;
     
 }
 .product-item p{
     text-align: center;
     margin: 10px 0;
+    height: 18px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }

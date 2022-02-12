@@ -57,4 +57,41 @@ public class ProductDBContext extends DBContext {
         }
         return listProduct;
     }
+    
+    
+    public ArrayList<Product> getListProductByText(String txt) {
+        ArrayList<Product> listProduct = new ArrayList<>();
+        String query = "SELECT ProductID, ProductName, Image, UnitCost, Description, p.CategoryID, c.CategoryName FROM dbo.Products p JOIN dbo.Categories c\n"
+                + "ON c.CategoryID = p.CategoryID\n"
+                + "WHERE ProductName LIKE '%" + txt + "%'";
+
+        try {
+            PreparedStatement ps = connection.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Product p = new Product();
+                Category c = new Category();
+
+                p.setProductId(rs.getInt("ProductID"));
+                p.setProductName(rs.getString("ProductName"));
+                p.setImage(rs.getString("Image"));
+                p.setUnitCost(rs.getInt("UnitCost"));
+                p.setDescription(rs.getString("Description"));
+                c.setCategoryId(rs.getInt("CategoryID"));
+                c.setCategoryName(rs.getString("CategoryName"));
+                p.setCategory(c);
+
+                listProduct.add(p);
+            }
+
+            return listProduct;
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ProductDBContext.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return listProduct;
+
+    }
 }

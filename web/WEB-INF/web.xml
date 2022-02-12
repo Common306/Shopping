@@ -4,9 +4,17 @@
         <servlet-name>CategoryController</servlet-name>
         <servlet-class>Controller.CategoryController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>SearchController</servlet-name>
+        <servlet-class>Controller.SearchController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CategoryController</servlet-name>
         <url-pattern>/category</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>SearchController</servlet-name>
+        <url-pattern>/search</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

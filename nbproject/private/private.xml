@@ -3,11 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/D:/Code%20JavaWeb/Shopping/web/view/category.jsp</file>
-            <file>file:/D:/Code%20JavaWeb/Shopping/web/view/header.jsp</file>
-            <file>file:/D:/Code%20JavaWeb/Shopping/src/java/DAL/ProductDBContext.java</file>
+            <file>file:/D:/Code%20JavaWeb/Shopping/web/header.jsp</file>
+            <file>file:/D:/Code%20JavaWeb/Shopping/web/css/category.css</file>
             <file>file:/D:/Code%20JavaWeb/Shopping/src/java/Controller/CategoryController.java</file>
-            <file>file:/D:/Code%20JavaWeb/Shopping/src/java/DAL/ClassifyDBContext.java</file>
+            <file>file:/D:/Code%20JavaWeb/Shopping/web/home.jsp</file>
         </group>
     </open-files>
 </project-private>

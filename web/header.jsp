@@ -3,7 +3,7 @@
 <jsp:useBean id="classify" class="DAL.ClassifyDBContext" scope="request" ></jsp:useBean>
 <jsp:useBean id="category" class="DAL.CategoryDBContext" scope="request" ></jsp:useBean>
 
-    <div class="header">
+    <div class="header" style="margin-bottom: 50px">
         <div class="header-child">
             <div class="header-left">
                 <a href="#" class="padding3020" id="menu-open">
@@ -30,7 +30,9 @@
             </a>
         </div>
         <div class="header-right">
-            <input type="text" placeholder="SEARCH" class="search"/>
+            <form action="search" method="POST" style="display: inline-block">
+                <input type="text" placeholder="SEARCH" class="search" name="textSearch"/>
+            </form>
             <a href="#" class="padding3020">Tài Khoản</a>
             <a href="#" class="padding3020">
                 <i class="fas fa-shopping-cart"></i>

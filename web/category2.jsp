@@ -29,7 +29,7 @@
 
                 <% for (Product p : listProduct) {
                 %>
-                <a href="#" class="product-item">
+                <a href="product?productId=<%= p.getProductId() %>" class="product-item">
                     <img src="<%= p.getImage()%>" alt="" style="width: 324px;height: 518px;">
                     <p><%= p.getProductName()%></p>
                     <p><%= p.getUnitCost()%> VND</p>

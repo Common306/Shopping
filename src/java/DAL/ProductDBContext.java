@@ -94,4 +94,38 @@ public class ProductDBContext extends DBContext {
         return listProduct;
 
     }
+    
+     public Product getProductByProductId(int productId) {
+        String query = "SELECT ProductID, ProductName, Image, UnitCost, Description, p.CategoryID, c.CategoryName FROM dbo.Products p JOIN dbo.Categories c\n"
+                + "ON c.CategoryID = p.CategoryID\n"
+                + "WHERE p.ProductID = ?";
+
+        try {
+            PreparedStatement ps = connection.prepareStatement(query);
+            ps.setInt(1, productId);
+            ResultSet rs = ps.executeQuery();
+            Product p = new Product();
+            while (rs.next()) {
+                Category c = new Category();
+
+                p.setProductId(rs.getInt("ProductID"));
+                p.setProductName(rs.getString("ProductName"));
+                p.setImage(rs.getString("Image"));
+                p.setUnitCost(rs.getInt("UnitCost"));
+                p.setDescription(rs.getString("Description"));
+                c.setCategoryId(rs.getInt("CategoryID"));
+                c.setCategoryName(rs.getString("CategoryName"));
+                p.setCategory(c);
+
+            }
+
+            return p;
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ProductDBContext.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return null;
+
+    }
 }

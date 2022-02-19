@@ -10,10 +10,6 @@
     margin-bottom: 40px;
 }
 
-.account-container-child {
-    width: 50%;
-}
-
 .account-container-child input[type="submit"] {
     padding: 15px 20px;
     background-color: #222;

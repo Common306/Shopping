@@ -1,7 +1,9 @@
+<%@page import="Model.Account"%>
 <%@page contentType="text/html" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <jsp:useBean id="classify" class="DAL.ClassifyDBContext" scope="request" ></jsp:useBean>
 <jsp:useBean id="category" class="DAL.CategoryDBContext" scope="request" ></jsp:useBean>
+<% Account account = (Account) request.getSession().getAttribute("account"); %>
 
     <div class="header" style="margin-bottom: 50px">
         <div class="header-child">
@@ -33,7 +35,12 @@
             <form action="search" method="POST" style="display: inline-block">
                 <input type="text" placeholder="SEARCH" class="search" name="textSearch"/>
             </form>
-            <a href="#" class="padding3020">Tài Khoản</a>
+            <%if (account == null) {%> 
+                <a href="account.jsp" class="padding3020">Tài Khoản</a>
+            <%} else {%>
+            <a href="<%= account.isManager()?"manager.jsp":"#" %>" class="padding3020">Hello <%= account.getUsername()%></a>
+                <a href="signout">Sign out</a>
+            <%}%>
             <a href="#" class="padding3020">
                 <i class="fas fa-shopping-cart"></i>
             </a>

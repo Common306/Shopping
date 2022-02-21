@@ -128,4 +128,156 @@ public class ProductDBContext extends DBContext {
         return null;
 
     }
+     
+     public ArrayList<Product> getAllProduct() {
+        ArrayList<Product> listProduct = new ArrayList<>();
+        String query = "SELECT ProductID, ProductName, Image, UnitCost, Description, p.CategoryID, c.CategoryName FROM dbo.Products p JOIN dbo.Categories c\n"
+                + "ON c.CategoryID = p.CategoryID";
+
+        try {
+            PreparedStatement ps = connection.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                Product p = new Product();
+                Category c = new Category();
+
+                p.setProductId(rs.getInt("ProductID"));
+                p.setProductName(rs.getString("ProductName"));
+                p.setImage(rs.getString("Image"));
+                p.setUnitCost(rs.getInt("UnitCost"));
+                p.setDescription(rs.getString("Description"));
+                c.setCategoryId(rs.getInt("CategoryID"));
+                c.setCategoryName(rs.getString("CategoryName"));
+                p.setCategory(c);
+
+                listProduct.add(p);
+            }
+
+            return listProduct;
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ProductDBContext.class.getName()).log(Level.SEVERE, null, ex);
+        }
+
+        return listProduct;
+    }
+     
+     
+     public int getLastIdProduct() {
+        String query = "SELECT TOP 1 ProductID FROM dbo.Products\n"
+                + "ORDER BY ProductID DESC";
+        try {
+            PreparedStatement ps = connection.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                return rs.getInt("productID");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ProductDBContext.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return 0;
+    }
+
+    public void addProduct(Product p) {
+        String query = "INSERT INTO [Products]([ProductID],[ProductName],[Image],[UnitCost],[Description],[CategoryID])\n"
+                + " VALUES(?,?,?,?,?,?)";
+        PreparedStatement ps = null;
+        try {
+            ps = connection.prepareStatement(query);
+            ps.setInt(1, p.getProductId());
+            ps.setString(2, p.getProductName());
+            ps.setString(3, p.getImage());
+            ps.setInt(4, p.getUnitCost());
+            ps.setString(5, p.getDescription());
+            ps.setInt(6, p.getCategory().getCategoryId());
+
+            ps.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(ProductDBContext.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            if (ps != null) {
+                try {
+                    ps.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(ProductDBContext.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(ProductDBContext.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+
+    }
+    
+    
+    public void updateProduct(Product p) {
+        String query = "UPDATE [Products]\n"
+                + "   SET	[ProductName] = ?,\n"
+                + "		[Image] = ?,\n"
+                + "		[UnitCost] = ?,\n"
+                + "		[Description] = ?,\n"
+                + "		[CategoryID] = ?\n"
+                + " WHERE ProductID = ?";
+        PreparedStatement ps = null;
+        try {
+            ps = connection.prepareStatement(query);
+            ps.setString(1, p.getProductName());
+            ps.setString(2, p.getImage());
+            ps.setInt(3, p.getUnitCost());
+            ps.setString(4, p.getDescription());
+            ps.setInt(5, p.getCategory().getCategoryId());
+            ps.setInt(6, p.getProductId());
+            ps.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(ProductDBContext.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            if (ps != null) {
+                try {
+                    ps.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(ProductDBContext.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(ProductDBContext.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+    }
+    
+    
+    public void deleteProduct(int productId) {
+        String query = "DELETE FROM dbo.Products WHERE ProductID = ?";
+        PreparedStatement ps = null;
+        try {
+            ps = connection.prepareStatement(query);
+            ps.setInt(1, productId);
+            ps.executeUpdate();
+        } catch (SQLException ex) {
+            Logger.getLogger(ProductDBContext.class.getName()).log(Level.SEVERE, null, ex);
+        } finally {
+            if (ps != null) {
+                try {
+                    ps.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(ProductDBContext.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+            if (connection != null) {
+                try {
+                    connection.close();
+                } catch (SQLException ex) {
+                    Logger.getLogger(ProductDBContext.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+    }
 }

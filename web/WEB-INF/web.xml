@@ -24,6 +24,18 @@
         <servlet-name>RegisterController</servlet-name>
         <servlet-class>Controller.RegisterController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CreateController</servlet-name>
+        <servlet-class>Controller.CreateController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>EditController</servlet-name>
+        <servlet-class>Controller.EditController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>DeleteController</servlet-name>
+        <servlet-class>Controller.DeleteController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CategoryController</servlet-name>
         <url-pattern>/category</url-pattern>
@@ -47,6 +59,18 @@
     <servlet-mapping>
         <servlet-name>RegisterController</servlet-name>
         <url-pattern>/register</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CreateController</servlet-name>
+        <url-pattern>/create</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>EditController</servlet-name>
+        <url-pattern>/edit</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>DeleteController</servlet-name>
+        <url-pattern>/delete</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

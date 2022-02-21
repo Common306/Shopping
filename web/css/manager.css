@@ -1,0 +1,143 @@
+.manager-container {
+    max-width: 1200px;
+    margin: 0 auto;
+}
+
+.manager-header {
+    width: 100%;
+    display: flex;
+    justify-content:space-between;
+    background-color:  #ccc;
+    padding: 15px 20px;
+}
+.manager-header h2 {
+    margin: auto 0;
+}
+.manager-header a {
+    background-color: rgb(29, 236, 29);
+    padding: 10px 15px;
+}
+
+#add-btn:hover,
+.edit-btn:hover,
+.delete-btn:hover,
+.close-btn{
+    cursor: pointer;
+}
+
+.edit-btn {
+    color: orange;
+}
+.delete-btn {
+    color: red;
+}
+
+.manager-body {
+    width: 100%;
+}
+
+.manager-body table {
+    width: 100%;
+}
+
+.manager-body table tr td {
+    text-align:center;
+}
+
+.manager-body table th {
+    padding: 10px 0;
+}
+
+.manager-body table th:nth-child(2) {
+    width:280px;
+}
+.manager-body table th:nth-child(3) {
+    width:200px;
+}
+.manager-body table th:nth-child(5) {
+    width:350px;
+}
+.manager-body table th:first-child,
+.manager-body table th:nth-child(7), 
+.manager-body table th:nth-child(8) {
+    width:40px;
+}
+
+.manager-body img {
+    width: 200px;
+    height: 262px;
+}
+
+.form {
+    width: 600px;
+    position: fixed;
+    top: 100px;
+    z-index: 2;
+/*    display:none;*/
+}
+
+.form-header {
+    display: flex;
+    justify-content:space-between;
+    padding: 15px 30px;
+    background-color: #ccc;
+}
+
+.form-body {
+    background-color: #f1f1f1;
+    padding: 15px 30px;
+}
+
+.form-body div {
+    width: 100%;
+    display: flex;
+    justify-content:space-between;
+    margin-bottom: 30px;
+}
+
+.form-body div .label {
+    width: 20%;
+    margin: auto;
+}
+
+.form-body div .input {
+    flex: 1;
+    padding: 8px 15px;
+    outline: none;
+}
+
+.form-footer {
+    padding: 15px 30px;
+    background-color: #ccc;
+    text-align: right;
+}
+
+.form-footer input {
+    padding: 10px 40px;
+    background-color: rgb(29, 236, 29);
+    border: none;
+}
+
+.form-footer input:hover {
+    cursor: pointer;
+}
+
+#overlay {
+    background: rgba(0, 0, 0, 0.6);
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 1;
+    display: none;
+    transition: 0.5s;
+}
+
+#close-btn{
+    cursor: pointer;
+}
+
+#form-edit {
+    display: block;
+}

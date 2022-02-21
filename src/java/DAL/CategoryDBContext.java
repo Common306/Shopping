@@ -30,5 +30,25 @@ public class CategoryDBContext extends DBContext {
         }
         return listCategory;
     }
+    
+    public ArrayList<Category> getAllCategory() {
+
+        ArrayList<Category> listCategory = new ArrayList<>();
+        String query = "SELECT CategoryID, CategoryName, ClassifyID FROM dbo.Categories";
+        try {
+            PreparedStatement ps = connection.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
+
+            while (rs.next()) {
+                listCategory.add(new Category(rs.getInt("CategoryID"), rs.getString("CategoryName"), rs.getInt("ClassifyID")));
+            }
+
+            return listCategory;
+
+        } catch (SQLException ex) {
+            Logger.getLogger(ClassifyDBContext.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return listCategory;
+    }
 
 }

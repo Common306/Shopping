@@ -20,8 +20,9 @@
     </head>
     <body>
         <jsp:include page="header.jsp"></jsp:include>
-        <form action="#" method="POST">
+        <form action="cart" method="POST">
             <div class="product-container">
+                <input type="text" value="<%= p.getProductId() %>" name="id" style="display: none">
                 <div class="product-container-left">
                     <img src="<%= p.getImage()%>" alt="">
                 </div>
@@ -32,7 +33,7 @@
                         <%= p.getDescription()%>
                     </p>
                     <div>
-                        <input type="number" value="1" min="0" class="product-quantity" name="quantity"/>
+                        <input type="number" value="1" min="1" class="product-quantity" name="quantity"/>
                         <input type="submit" value="THÊM VÀO GIỎ" class="add-product"/>
                     </div>
                 </div>

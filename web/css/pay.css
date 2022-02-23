@@ -38,3 +38,9 @@
     font-size:16px;
     margin-left: 65px;
 }
+
+.error {
+    margin-left: 31%;
+    margin-top: 8px;
+    color: red;
+}

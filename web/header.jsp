@@ -41,7 +41,7 @@
             <a href="<%= account.isManager()?"manager.jsp":"#" %>" class="padding3020">Hello <%= account.getUsername()%></a>
                 <a href="signout">Sign out</a>
             <%}%>
-            <a href="#" class="padding3020">
+            <a href="cart.jsp" class="padding3020">
                 <i class="fas fa-shopping-cart"></i>
             </a>
         </div>

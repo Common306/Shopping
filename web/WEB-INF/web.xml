@@ -36,6 +36,14 @@
         <servlet-name>DeleteController</servlet-name>
         <servlet-class>Controller.DeleteController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>CartController</servlet-name>
+        <servlet-class>Controller.CartController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>PayController</servlet-name>
+        <servlet-class>Controller.PayController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CategoryController</servlet-name>
         <url-pattern>/category</url-pattern>
@@ -71,6 +79,14 @@
     <servlet-mapping>
         <servlet-name>DeleteController</servlet-name>
         <url-pattern>/delete</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>CartController</servlet-name>
+        <url-pattern>/cart</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>PayController</servlet-name>
+        <url-pattern>/pay</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>

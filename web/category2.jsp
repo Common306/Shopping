@@ -20,16 +20,23 @@
               integrity="sha512-Fo3rlrZj/k7ujTnHg4CGR2D7kSs0v4LLanw2qksYuRlEzO+tcaEPQogQ0KaoGN26/zrn20ImR1DfuLWnOo7aBA=="
               crossorigin="anonymous" referrerpolicy="no-referrer" />
         <% ArrayList<Product> listProduct = (ArrayList<Product>) request.getAttribute("listProduct");
+            int pageIndex = (Integer) request.getAttribute("pageIndex");
+            int numPage = (Integer) request.getAttribute("numPage");
+            String textSearch = (String) request.getAttribute("textSearch");
         %>
     </head>
     <body>
         <jsp:include page="header.jsp"></jsp:include>
-            <div class="classify-container">
-                <div class="list-product">
+        <% if (listProduct.isEmpty()) {
+        %>
+        <p style="margin: 50px 100px;">Không có sản phẩm nào</p>
+        <%} else {%>
+        <div class="classify-container">
+            <div class="list-product">
 
                 <% for (Product p : listProduct) {
                 %>
-                <a href="product?productId=<%= p.getProductId() %>" class="product-item">
+                <a href="product?productId=<%= p.getProductId()%>" class="product-item">
                     <img src="<%= p.getImage()%>" alt="" style="width: 324px;height: 518px;">
                     <p><%= p.getProductName()%></p>
                     <p><%= p.getUnitCost()%> VND</p>
@@ -37,5 +44,26 @@
                 <%}%>
             </div>
         </div>
+        <div style="text-align: center; margin-bottom: 50px">
+            Page: <input id="page" style="width: 50px" type="number" value="<%= pageIndex%>" min="1" max="<%= numPage%>"> / <%= numPage%>
+        </div>
+
+        <script>
+            var txt = "${textSearch}";
+            var page = document.getElementById("page");
+
+            page.addEventListener("keyup", function (event) {
+                if (event.keyCode === 13) {
+                    event.preventDefault();
+                    window.location.href = "search?textSearch=" + txt + "&page=" + page.value;
+                }
+            });
+
+            page.addEventListener("change", function () {
+                window.location.href = "search?textSearch=" + txt + "&page=" + page.value;
+            });
+
+        </script>
+        <%}%>
     </body>
 </html>

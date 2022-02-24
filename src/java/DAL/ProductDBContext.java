@@ -59,14 +59,21 @@ public class ProductDBContext extends DBContext {
     }
     
     
-    public ArrayList<Product> getListProductByText(String txt) {
+    public ArrayList<Product> getListProductByText(String txt, int pageIndex, int pageSize) {
         ArrayList<Product> listProduct = new ArrayList<>();
-        String query = "SELECT ProductID, ProductName, Image, UnitCost, Description, p.CategoryID, c.CategoryName FROM dbo.Products p JOIN dbo.Categories c\n"
+        String query = "SELECT ProductID, ProductName, Image, UnitCost, Description, Temp.CategoryID, Temp.CategoryName FROM\n"
+                + "(SELECT ProductID, ProductName, Image, UnitCost, Description, p.CategoryID, c.CategoryName, ROW_NUMBER() OVER (ORDER BY p.ProductID ASC) AS Num \n"
+                + "FROM dbo.Products p JOIN dbo.Categories c\n"
                 + "ON c.CategoryID = p.CategoryID\n"
-                + "WHERE ProductName LIKE '%" + txt + "%'";
+                + "WHERE ProductName LIKE '%" + txt + "%') AS Temp\n"
+                + "WHERE Temp.Num >= (? - 1) * ? + 1 AND Temp.Num <= ? * ?";
 
         try {
             PreparedStatement ps = connection.prepareStatement(query);
+            ps.setInt(1, pageIndex);
+            ps.setInt(2, pageSize);
+            ps.setInt(3, pageIndex);
+            ps.setInt(4, pageSize);
             ResultSet rs = ps.executeQuery();
 
             while (rs.next()) {
@@ -279,5 +286,21 @@ public class ProductDBContext extends DBContext {
                 }
             }
         }
+    }
+    
+    public int countRecord(String txt) {
+        String query = "SELECT COUNT(*) as num FROM dbo.Products p JOIN dbo.Categories c\n"
+                + "ON c.CategoryID = p.CategoryID\n"
+                + "WHERE p.ProductName LIKE '%"+ txt +"%'";
+        try {
+            PreparedStatement ps = connection.prepareStatement(query);
+            ResultSet rs = ps.executeQuery();
+            if (rs.next()) {
+                return rs.getInt("num");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(ProductDBContext.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        return -1;
     }
 }

@@ -15,7 +15,27 @@ public class SearchController extends HttpServlet {
     protected void processRequest(HttpServletRequest request, HttpServletResponse response)
             throws ServletException, IOException {
         String textSearch = request.getParameter("textSearch");
-        ArrayList<Product> listProduct = new ProductDBContext().getListProductByText(textSearch);
+
+        int pageIndex;
+        if (request.getParameter("page") != null) {
+            pageIndex = Integer.parseInt(request.getParameter("page"));
+        } else {
+            pageIndex = 1;
+        }
+        
+        int pageSize = 6;
+
+        int numRecord = new ProductDBContext().countRecord(textSearch);
+        int numPage;
+        if (numRecord % pageSize == 0) {
+            numPage = numRecord / pageSize;
+        } else {
+            numPage = numRecord / pageSize + 1;
+        }
+        ArrayList<Product> listProduct = new ProductDBContext().getListProductByText(textSearch, pageIndex, pageSize);
+        request.setAttribute("textSearch", textSearch);
+        request.setAttribute("pageIndex", pageIndex);
+        request.setAttribute("numPage", numPage);
         request.setAttribute("listProduct", listProduct);
         request.getRequestDispatcher("category2.jsp").forward(request, response);
     }

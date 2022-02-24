@@ -32,7 +32,7 @@
             </a>
         </div>
         <div class="header-right">
-            <form action="search" method="POST" style="display: inline-block">
+            <form action="search" method="GET" style="display: inline-block">
                 <input type="text" placeholder="SEARCH" class="search" name="textSearch"/>
             </form>
             <%if (account == null) {%> 

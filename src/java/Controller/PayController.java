@@ -35,7 +35,11 @@ public class PayController extends HttpServlet {
             request.getRequestDispatcher("pay.jsp").forward(request, response);
         }
         
-        new CartDBContext().addCart(listCart, name, phone, address);
+        java.util.Date dateJava = new java.util.Date();
+        java.sql.Date dateSql = new java.sql.Date(dateJava.getTime());
+        java.sql.Time timeSql = new java.sql.Time(dateJava.getTime());
+        
+        new CartDBContext().addCart(listCart, name, phone, address, dateSql, timeSql);
         request.getSession().removeAttribute("listCart");
         response.getWriter().print("<p style='color: limegreen;font-size: 30px;font-weight: bold;margin: 50px 100px;'>Thanh toán thành công</p>");
         

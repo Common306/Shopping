@@ -36,6 +36,7 @@ public class PayController extends HttpServlet {
         }
         
         new CartDBContext().addCart(listCart, name, phone, address);
+        request.getSession().removeAttribute("listCart");
         response.getWriter().print("<p style='color: limegreen;font-size: 30px;font-weight: bold;margin: 50px 100px;'>Thanh toán thành công</p>");
         
     }

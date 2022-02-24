@@ -9,11 +9,11 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-public class CartDBContext extends DBContext {
+public class OrderDBContext extends DBContext {
 
-    public void addCart(ArrayList<Cart> listCart, String name, String phone, String address, Date date, Time time) {
+    public void addToOrder(ArrayList<Cart> listCart, String name, String phone, String address, Date date, Time time) {
         for (Cart cart : listCart) {
-            String query = "INSERT INTO [Cart]([Date],[Time],[Name],[Phone],[Address],[ProductID],[Quantity])\n"
+            String query = "INSERT INTO [Order]([Date],[Time],[Name],[Phone],[Address],[ProductID],[Quantity])\n"
                     + "     VALUES(?,?,?,?,?,?,?)";
             PreparedStatement ps;
             try {
@@ -28,7 +28,7 @@ public class CartDBContext extends DBContext {
 
                 ps.executeUpdate();
             } catch (SQLException ex) {
-                Logger.getLogger(CartDBContext.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(OrderDBContext.class.getName()).log(Level.SEVERE, null, ex);
             }
 
         }

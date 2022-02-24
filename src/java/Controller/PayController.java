@@ -1,7 +1,7 @@
 
 package Controller;
 
-import DAL.CartDBContext;
+import DAL.OrderDBContext;
 import Model.Cart;
 import java.io.IOException;
 import java.util.ArrayList;
@@ -39,7 +39,7 @@ public class PayController extends HttpServlet {
         java.sql.Date dateSql = new java.sql.Date(dateJava.getTime());
         java.sql.Time timeSql = new java.sql.Time(dateJava.getTime());
         
-        new CartDBContext().addCart(listCart, name, phone, address, dateSql, timeSql);
+        new OrderDBContext().addToOrder(listCart, name, phone, address, dateSql, timeSql);
         request.getSession().removeAttribute("listCart");
         response.getWriter().print("<p style='color: limegreen;font-size: 30px;font-weight: bold;margin: 50px 100px;'>Thanh toán thành công</p>");
         

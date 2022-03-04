@@ -1,0 +1,32 @@
+.manager-order-container {
+    width: 100%;
+    margin-top: 50px;
+}
+
+.manager-order-container table {
+    width: 90%;
+    text-align: center;
+    margin:auto;
+    
+}
+table tr td{
+    padding: 5px;
+}
+.address {
+    width: 250px;
+}
+
+.name-product {
+    width: 250px;
+}
+
+.manager-img-product{
+    width: 80px;
+}
+
+.manager-order-container a {
+    background-color: #29dc29;
+    color: #fff;
+    padding: 8px 10px;
+    border-radius: 10px;
+}

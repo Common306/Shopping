@@ -32,13 +32,24 @@
             </a>
         </div>
         <div class="header-right">
-            <form action="search" method="GET" style="display: inline-block">
-                <input type="text" placeholder="SEARCH" class="search" name="textSearch"/>
-            </form>
+            
             <%if (account == null) {%> 
+                <form action="search" method="GET" style="display: inline-block">
+                    <input type="text" placeholder="SEARCH" class="search" name="textSearch"/>              
+                </form>
                 <a href="account.jsp" class="padding3020">Tài Khoản</a>
             <%} else {%>
-            <a href="<%= account.isManager()?"manager.jsp":"#" %>" class="padding3020">Hello <%= account.getUsername()%></a>
+
+                <%if (!account.isManager()) {%>
+                    <form action="search" method="GET" style="display: inline-block">
+                        <input type="text" placeholder="SEARCH" class="search" name="textSearch"/>              
+                    </form>
+                    <a href="#" class="padding3020">Hello <%= account.getUsername()%></a>
+                <%} else {%>
+                    <a href="order" class="padding3020">Quản Lý Đơn Hàng</a>
+                    <a href="manager.jsp" class="padding3020">Quản Lý Sản Phẩm</a>
+                <%}%>
+                
                 <a href="signout">Sign out</a>
             <%}%>
             <a href="cart.jsp" class="padding3020">

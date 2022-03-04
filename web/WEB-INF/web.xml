@@ -44,6 +44,14 @@
         <servlet-name>PayController</servlet-name>
         <servlet-class>Controller.PayController</servlet-class>
     </servlet>
+    <servlet>
+        <servlet-name>OrderController</servlet-name>
+        <servlet-class>Controller.OrderController</servlet-class>
+    </servlet>
+    <servlet>
+        <servlet-name>ConfirmController</servlet-name>
+        <servlet-class>Controller.ConfirmController</servlet-class>
+    </servlet>
     <servlet-mapping>
         <servlet-name>CategoryController</servlet-name>
         <url-pattern>/category</url-pattern>
@@ -87,6 +95,14 @@
     <servlet-mapping>
         <servlet-name>PayController</servlet-name>
         <url-pattern>/pay</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>OrderController</servlet-name>
+        <url-pattern>/order</url-pattern>
+    </servlet-mapping>
+    <servlet-mapping>
+        <servlet-name>ConfirmController</servlet-name>
+        <url-pattern>/confirm</url-pattern>
     </servlet-mapping>
     <session-config>
         <session-timeout>
